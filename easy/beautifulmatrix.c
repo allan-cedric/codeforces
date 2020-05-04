@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <math.h>
 
 int main()
 {
     int mat[5][5];
-    double euclidean;
+    int euclidean;
 
     int i, j;
     for (i = 0; i < 5; i++)
@@ -13,10 +12,19 @@ int main()
         {
             scanf("%i", &mat[i][j]);
             if (mat[i][j])
-                euclidean = sqrt((2 - i) * (2 - i) + (2 - j) * (2 - j));
+            {
+                if ((i % 4) || (j % 4))
+                {
+                    euclidean = 0;
+                    while (euclidean * euclidean < (2 - i) * (2 - i) + (2 - j) * (2 - j))
+                        euclidean++;
+                }
+                else
+                    euclidean = 4;
+            }
         }
     }
 
-    printf("%.0lf\n", ceil(euclidean));
+    printf("%i\n", euclidean);
     return 0;
 }
