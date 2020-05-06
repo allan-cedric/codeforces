@@ -1,29 +1,24 @@
 #include <iostream>
-#include <bits/stdc++.h>
 
 using namespace std;
 
 int main()
 {
-    int num_soldiers, height, max_index = 0, min_index = 0, max_value, min_value;
+    int num_soldiers, max_index = 0, min_index = 0;
+
     cin >> num_soldiers;
-    cin >> height;
-    max_value = height;
-    min_value = max_value;
+    int heights[num_soldiers];
+    for (int i = 0; i < num_soldiers; i++)
+        cin >> heights[i];
+
     for (int i = 1; i < num_soldiers; i++)
     {
-        cin >> height;
-        if (height > max_value)
-        {
-            max_value = height;
+        if (heights[i] > heights[max_index])
             max_index = i;
-        }
-        else if (height <= min_value)
-        {
-            min_value = height;
+        else if (heights[i] <= heights[min_index])
             min_index = i;
-        }
     }
+
     if (max_index <= min_index)
         cout << num_soldiers - 1 - min_index + max_index << endl;
     else
