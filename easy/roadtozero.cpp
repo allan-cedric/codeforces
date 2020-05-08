@@ -9,7 +9,7 @@ int main()
     while (t--)
     {
         cin >> x >> y >> a >> b;
-        cout << b * min(x, y) * ((a << 1) >= b) + a * abs((x - y) * ((a << 1) >= b) + (x + y) * ((a << 1) < b)) << endl;
+        cout << b * min(x, y) * ((a << 1) >= b) + a * abs(x + y * (((a << 1) < b) - ((a << 1) >= b))) << endl;
     }
     return 0;
 }
