@@ -21,20 +21,22 @@ int main()
         num_moves++;
         while ((num_candies - i) > 1)
         {
-            play_b = 0;
-            for (int k = num_candies - 1; (num_candies - i > 1) && play_b <= play_a; num_candies = k--)
-                play_b += sizes[k];
-            b += play_b;
-            num_moves++;
-
-            if (num_candies - i <= 1)
-                break;
-
-            play_a = 0;
-            for (int k = i + 1; (num_candies - i > 1) && play_a <= play_b; i = k++)
-                play_a += sizes[k];
-            a += play_a;
-            num_moves++;
+            if (play_b < play_a)
+            {
+                play_b = 0;
+                for (int k = num_candies - 1; (num_candies - i > 1) && play_b <= play_a; num_candies = k--)
+                    play_b += sizes[k];
+                b += play_b;
+                num_moves++;
+            }
+            else if (play_a < play_b)
+            {
+                play_a = 0;
+                for (int k = i + 1; (num_candies - i > 1) && play_a <= play_b; i = k++)
+                    play_a += sizes[k];
+                a += play_a;
+                num_moves++;
+            }
         }
         cout << num_moves << " " << a << " " << b << endl;
     }
