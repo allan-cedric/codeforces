@@ -1,5 +1,4 @@
 #pragma GCC optimize("O3")
-#pragma GCC target("avx,avx2,sse4")
 
 #include <stdio.h>
 
@@ -10,7 +9,7 @@ int main()
     while (t--)
     {
         scanf(" %i %i", &n, &m);
-        printf("%i\n", (n * m) / 2 + (n * m) % 2);
+        printf("%i\n", (n * m + 1) / 2);
     }
     return 0;
 }
