@@ -7,54 +7,27 @@ int main()
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(0);
 
-    int t, n;
+    int t, n, i;
     std::cin >> t;
     while (t--)
     {
         std::cin >> n;
         int a[n], b[n];
-        for (int i = 0; i < n; i++)
+        for (i = 0; i < n; i++)
             std::cin >> a[i];
-        for (int i = 0; i < n; i++)
+        for (i = 0; i < n; i++)
             std::cin >> b[i];
-        if (a[0] != b[0])
-            std::cout << "NO" << std::endl;
-        else
+        i = 0;
+        for (int one = 0, minusOne = 0; i < n; i++)
         {
-            int i = n - 1, possibleChange;
-            while (i)
-            {
-                possibleChange = 0;
-                if (b[i] - a[i] > 0)
-                {
-                    for (int j = 0; j < i; j++)
-                    {
-                        if (a[j] > 0)
-                        {
-                            possibleChange = 1;
-                            break;
-                        }
-                    }
-                    if (!possibleChange)
-                        break;
-                }
-                else if (b[i] - a[i] < 0)
-                {
-                    for (int j = 0; j < i; j++)
-                    {
-                        if (a[j] < 0)
-                        {
-                            possibleChange = 1;
-                            break;
-                        }
-                    }
-                    if (!possibleChange)
-                        break;
-                }
-                i--;
-            }
-            std::cout << (!i ? "YES" : "NO") << std::endl;
+            if ((a[i] < b[i] && !one) || (a[i] > b[i] && !minusOne))
+                break;
+            if (a[i] == 1)
+                one = 1;
+            else if (a[i] == -1)
+                minusOne = 1;
         }
+        std::cout << (i == n ? "YES" : "NO") << std::endl;
     }
     return 0;
 }
