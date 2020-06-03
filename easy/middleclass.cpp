@@ -4,7 +4,7 @@
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
+    std::ios_base::sync_with_stdio(false);
     std::cin.tie(0);
     int t, n, x;
     uint64_t sum;
